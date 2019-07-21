@@ -2,12 +2,7 @@ node('master'){
     stage('Infrastructure Provision)
         echo "infrastructure Deployment"
         dir('terraform\\azure'){
-            bat 'terraform plan --target=module.az_config_network -out az_preview_network_execution_plan'
-            bat 'terraform apply "az_preview_network_execution_plan"'
-            bat 'terraform plan --target=module.az_config_vm -out az_preview_vm_execution_plan'
-            bat 'terraform apply "az_preview_vm_execution_plan"'
-            bat 'terraform plan --target=module.az_chef_bootstrap -out az_preview_chef_bootstrap_execution_plan'
-            bat 'terraform apply "az_preview_chef_bootstrap_execution_plan"'
+
           }
         }
     }
