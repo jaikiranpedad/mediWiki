@@ -1,0 +1,1 @@
+variable "nodes" {  type = "list" }
