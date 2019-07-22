@@ -1,17 +1,22 @@
 node('master'){
+
     stage('Infrastructure Provision)
     {
         echo "infrastructure Deployment"
         dir('terraform\\azure'){
             bat 'terraform plan 
             bat 'terraform apply
-          }
         }
+    }
 
     stage('App server setup'){
-
+    //Bootstrapping the App nodes with chef server
+        bat 'knife bootstrap MEDWIKAPP1 -x username -P password --sudo --config knife.rb --run-list "mediawiki_deployment::app_server_config"'
+        bat 'knife bootstrap MEDWIKAPP2 -x username -P password --sudo --config knife.rb --run-list "mediawiki_deployment::app_server_config"'
     }
-        stage('DB server setup'){
 
+    stage('DB server setup'){
+        //Bootstrapping the DB node with chef server
+        bat 'knife bootstrap MEDWIKDB1 -x username -P password --sudo --config knife.rb --run-list "mediawiki_deployment::dbserver_config"''
     }
 }
