@@ -1,8 +1,17 @@
 node('master'){
     stage('Infrastructure Provision)
+    {
         echo "infrastructure Deployment"
         dir('terraform\\azure'){
-
+            bat 'terraform plan 
+            bat 'terraform apply
           }
         }
+
+    stage('App server setup'){
+
     }
+        stage('DB server setup'){
+
+    }
+}
