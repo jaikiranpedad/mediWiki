@@ -1,0 +1,16 @@
+MediaWiki Deployment Process
+
+
+--- Upload the MediaWiki_deployment cookbook to chef server using below command
+
+    ########  knife cookbook upload MediaWiki_deployment #####
+
+---- Create the Jenkins pipeline job add the Jenkins file in Jenkins script
+
+     Deployment_JenkinsFile
+
+---- This jenkins job can be provided to the developers. When ever they trigger the job entire app will be setup.
+
+
+Thanks,
+Jaikiran
